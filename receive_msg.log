@@ -221,3 +221,66 @@ Traceback (most recent call last):
 pymem.exception.MemoryReadError: Could not read memory at: 140703456430112, length: 4 - GetLastError: 299
 
 2025-04-02 21:52:43,373 - ERROR - check_error:Could not read memory at: 140703456430112, length: 4 - GetLastError: 299
+2025-04-09 10:28:38,410 - ERROR - Traceback (most recent call last):
+  File "D:\anaconda3\envs\blive\lib\site-packages\pymem\__init__.py", line 686, in read_int
+    value = pymem.memory.read_int(self.process_handle, address)
+  File "D:\anaconda3\envs\blive\lib\site-packages\pymem\memory.py", line 327, in read_int
+    return read_ctype(handle, address, ctypes.c_int())
+  File "D:\anaconda3\envs\blive\lib\site-packages\pymem\memory.py", line 148, in read_ctype
+    raise pymem.exception.WinAPIError(error_code)
+pymem.exception.WinAPIError: Windows api error, error_code: 299
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "f:\PVZ\My_Stream_Project\receive_msg.py", line 96, in check_win
+    win_road_num = pvzcheat.get_win_road()
+  File "f:\PVZ\My_Stream_Project\cheat_game.py", line 176, in get_win_road
+    status = self.pm.read_int(self.is_win_address)
+  File "D:\anaconda3\envs\blive\lib\site-packages\pymem\__init__.py", line 688, in read_int
+    raise pymem.exception.MemoryReadError(address, struct.calcsize('i'), e.error_code)
+pymem.exception.MemoryReadError: Could not read memory at: 140720654452768, length: 4 - GetLastError: 299
+
+2025-04-09 10:28:38,412 - ERROR - check_error:Could not read memory at: 140720654452768, length: 4 - GetLastError: 299
+2025-04-09 11:03:04,156 - INFO - 用户：MicroDick 进入房间
+2025-04-09 11:03:17,934 - INFO - MicroDick：入座3路
+2025-04-09 11:03:25,409 - INFO - MicroDick：a21
+2025-04-09 11:03:32,135 - INFO - MicroDick：签到
+2025-04-09 11:03:32,795 - INFO - SlardarX：MicroDick成功签到！获取100
+2025-04-09 11:03:34,004 - INFO - SlardarX：0阳光
+2025-04-09 11:03:42,136 - INFO - MicroDick：a21
+2025-04-09 11:03:49,285 - INFO - MicroDick：b21
+2025-04-09 11:04:18,897 - INFO - MicroDick：签到
+2025-04-09 11:04:19,340 - INFO - SlardarX：MicroDick你今天已经签到过了嗷
+2025-04-09 11:04:20,444 - INFO - SlardarX：！
+2025-04-09 16:14:34,455 - INFO - MicroDick：入座3路
+2025-04-09 16:14:39,632 - INFO - MicroDick：冲冲冲
+2025-04-09 16:14:40,169 - INFO - SlardarX：触发普通僵尸
+2025-04-09 16:14:49,635 - INFO - MicroDick：小花花
+2025-04-09 16:14:49,963 - INFO - SlardarX：MicroDick:触发普通僵尸!
+2025-04-09 16:15:03,619 - INFO - 用户：MicroDick 送礼：100
+2025-04-09 16:15:04,056 - INFO - SlardarX：MicroDick:触发普通僵尸!
+2025-04-09 16:16:46,596 - INFO - 用户：MicroDick 进入房间
+2025-04-09 16:16:52,101 - INFO - MicroDick：入座3路
+2025-04-09 16:16:55,938 - INFO - MicroDick：冲冲冲
+2025-04-09 16:16:56,269 - INFO - SlardarX：触发普通僵尸
+2025-04-09 16:17:05,404 - INFO - MicroDick：小花花
+2025-04-09 16:17:05,890 - INFO - SlardarX：MicroDick:触发普通僵尸!
+2025-04-09 16:18:52,076 - INFO - MicroDick：入座3路
+2025-04-09 16:18:58,346 - INFO - MicroDick：路障僵尸
+2025-04-09 16:18:58,893 - INFO - SlardarX：MicroDick:触发路障僵尸!
+2025-04-09 16:22:23,259 - INFO - MicroDick：入座3路
+2025-04-09 16:22:28,992 - INFO - MicroDick：小花花
+2025-04-09 16:22:35,818 - INFO - 用户：MicroDick 送礼：100
+2025-04-09 16:22:36,257 - INFO - SlardarX：MicroDick:触发普通僵尸!
+2025-04-09 16:44:21,570 - INFO - MicroDick：入座3路
+2025-04-09 16:44:24,994 - INFO - MicroDick：小花花
+2025-04-09 16:44:25,440 - INFO - SlardarX：MicroDick:触发普通僵尸!
+2025-04-09 17:02:38,762 - INFO - 用户：MicroDick 进入房间
+2025-04-09 17:02:44,261 - INFO - MicroDick：入座5路
+2025-04-09 17:03:15,405 - INFO - MicroDick：药葫芦
+2025-04-09 17:03:15,844 - INFO - SlardarX：MicroDick:触发路障僵尸!
+2025-04-09 17:03:32,788 - INFO - MicroDick：牛哇牛哇
+2025-04-09 17:03:33,225 - INFO - SlardarX：MicroDick:触发橄榄球僵尸!
+2025-04-09 17:03:47,917 - INFO - MicroDick：人气票
+2025-04-09 17:03:48,355 - INFO - SlardarX：MicroDick:触发撑杆僵尸!

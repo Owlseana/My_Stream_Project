@@ -142,6 +142,7 @@ def start(pvzcheat):
         show_text.sit_down(usr,text)
         show_text.stand_up(usr,text)
         text = text.lower()
+        price = message["price"] if "price" in message else 0
         try:
             for instruct in text.split(","):
                 instruct = instruct.replace(" ","")
@@ -187,9 +188,44 @@ def start(pvzcheat):
                 show_text.maintext_queue.put(f"{usr}\n触发普通僵尸！")
                 send_danmu("触发普通僵尸")
                 for index in range(1,6):
-                    status = pvzcheat.plant_plants("a",str(index*10))
+                    status = pvzcheat.plant_plants("a",str(index*10-4))
             elif text.startswith("show_shovel"):
                 pvzcheat.show_shovel()
+            elif text == "小花花" : # and price != 0
+                show_text.maintext_queue.put(f"{usr}\n触发普通僵尸！")
+                send_danmu(f"{usr}:触发普通僵尸!")
+                for _ in range(1,6):
+                    status = pvzcheat.plant_plants("a",str(int(show_text.usr_dict[usr])*10-4))
+            elif text == "药葫芦" :
+                show_text.maintext_queue.put(f"{usr}\n触发路障僵尸！")
+                send_danmu(f"{usr}:触发路障僵尸!")
+                for _ in range(1,6):
+                    status = pvzcheat.plant_plants("b",str(int(show_text.usr_dict[usr])*10-4))
+            elif text == "人气票":
+                show_text.maintext_queue.put(f"{usr}\n触发撑杆僵尸！")
+                send_danmu(f"{usr}:触发撑杆僵尸!")
+                for _ in range(1,6):
+                    status = pvzcheat.plant_plants("c",str(int(show_text.usr_dict[usr])*10-4))
+            elif text == "这个好诶":
+                show_text.maintext_queue.put(f"{usr}\n触发铁通僵尸！")
+                send_danmu(f"{usr}:触发铁通僵尸!")
+                for _ in range(1,6):
+                    status = pvzcheat.plant_plants("d",str(int(show_text.usr_dict[usr])*10-4))
+            elif text == "牛哇牛哇":
+                show_text.maintext_queue.put(f"{usr}\n触发橄榄球僵尸！")
+                send_danmu(f"{usr}:触发橄榄球僵尸!")
+                for _ in range(1,6):
+                    status = pvzcheat.plant_plants("e",str(int(show_text.usr_dict[usr])*10-4))
+            elif text == "稳":
+                show_text.maintext_queue.put(f"{usr}\n触发橄榄高坚果僵尸！")
+                send_danmu(f"{usr}:触发橄榄高坚果僵尸!")
+                for _ in range(1,6):
+                    status = pvzcheat.plant_plants("f",str(int(show_text.usr_dict[usr])*10-4))
+            elif text == "粉丝团灯牌":
+                show_text.maintext_queue.put(f"{usr}\n触发樱桃二爷僵尸！")
+                send_danmu(f"{usr}:触发樱桃二爷僵尸!")
+                for _ in range(1,6):
+                    status = pvzcheat.plant_plants("g",str(int(show_text.usr_dict[usr])*10-4))
             elif text == "路障僵尸":
                 show_text.maintext_queue.put(f"{usr}\n触发路障僵尸！")
                 send_danmu(f"{usr}:触发路障僵尸!")
@@ -275,19 +311,34 @@ async def receive(websocket):
                 logger.info(f"用户：{item['data']['uname']} 进入房间")
             elif item['cmd'] == "LIVE_OPEN_PLATFORM_SEND_GIFT" :
                 price = item['data']['price']
+                gift = item['data']['gift_name']
                 logger.info(f"用户：{item['data']['uname']} 送礼：{price}")
-                if price >0 and price <=100:
-                    msg_queue.put({"uname":item['data']['uname'],"msg":"路障僵尸"})
-                elif price>100 and price <=200:
-                    msg_queue.put({"uname":item['data']['uname'],"msg":"撑杆僵尸"})
-                elif price>200 and price <=300:
-                    msg_queue.put({"uname":item['data']['uname'],"msg":"铁通僵尸"})
-                elif price>300 and price <=400:
-                    msg_queue.put({"uname":item['data']['uname'],"msg":"橄榄僵尸"})
-                elif price>400 and price <=500:
-                    msg_queue.put({"uname":item['data']['uname'],"msg":"橄榄高坚果僵尸"})
-                elif price>500:
-                    msg_queue.put({"uname":item['data']['uname'],"msg":"樱桃二爷僵尸"})
+                if gift == "小花花" and price != 0:
+                    msg_queue.put({"uname":item['data']['uname'],"msg":"小花花", "price":price})
+                if gift == "药葫芦" and price != 0:
+                    msg_queue.put({"uname":item['data']['uname'],"msg":"药葫芦", "price":price})
+                if gift == "人气票" and price != 0:
+                    msg_queue.put({"uname":item['data']['uname'],"msg":"人气票", "price":price})
+                if gift == "这个好诶" and price != 0:
+                    msg_queue.put({"uname":item['data']['uname'],"msg":"这个好诶", "price":price})
+                if gift == "牛哇牛哇" and price != 0:
+                    msg_queue.put({"uname":item['data']['uname'],"msg":"牛哇牛哇", "price":price})
+                if gift == "稳" and price != 0:
+                    msg_queue.put({"uname":item['data']['uname'],"msg":"稳", "price":price})
+                if gift == "粉丝团灯牌" and price != 0:
+                    msg_queue.put({"uname":item['data']['uname'],"msg":"粉丝团灯牌", "price":price})
+                # if price >0 and price <=100:
+                #     msg_queue.put({"uname":item['data']['uname'],"msg":"路障僵尸"})
+                # elif price>100 and price <=200:
+                #     msg_queue.put({"uname":item['data']['uname'],"msg":"撑杆僵尸"})
+                # elif price>200 and price <=300:
+                #     msg_queue.put({"uname":item['data']['uname'],"msg":"铁通僵尸"})
+                # elif price>300 and price <=400:
+                #     msg_queue.put({"uname":item['data']['uname'],"msg":"橄榄僵尸"})
+                # elif price>400 and price <=500:
+                #     msg_queue.put({"uname":item['data']['uname'],"msg":"橄榄高坚果僵尸"})
+                # elif price>500:
+                #     msg_queue.put({"uname":item['data']['uname'],"msg":"樱桃二爷僵尸"})
 
 def main():
 

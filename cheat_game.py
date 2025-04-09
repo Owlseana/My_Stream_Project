@@ -141,7 +141,8 @@ class PvzCheat:
         self.change_position(x,y)
         time.sleep(0.1)
         self.pm.write_int(self.click_address,1)
-        # self.pm.write_int(self.click_address_1,8)
+        # time.sleep(0.1)  # 模拟按下时间
+        # self.pm.write_int(self.click_address, 0)
 
     
     def plant_plants(self,plant_word:str,position:str):
@@ -345,6 +346,9 @@ class PvzCheat:
             self.pm.free(value["address"])
 if __name__ == "__main__":
     pvzcheat = PvzCheat()
+    # pvzcheat.change_sun(60000)
+    # print(pvzcheat.get_sun())
+    
     # with pvzcheat:
     #     pvzcheat.show_shovel()
     #     # pvzcheat.inject()
@@ -352,8 +356,9 @@ if __name__ == "__main__":
     # pvzcheat = PvzCheat()
     # pvzcheat.test()
     # 
-    # pvzcheat.mouse_click(407,70)
-    # pvzcheat.plant_plants('a','6')
+    # pvzcheat.mouse_click(442,77)
+    for index in range(1,6):
+        status = pvzcheat.plant_plants("a",str(index*10-4))
     # pvzcheat.pm.write_int(pvzcheat.click_address_1,8)
     # pvzcheat.show_shovel()
     # print(pvzcheat.get_win_road())

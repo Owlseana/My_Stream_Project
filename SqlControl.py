@@ -64,7 +64,7 @@ class SqlControl:
             else:
                 self.cursor.execute("UPDATE blive_usr SET last_sign_in_date = ? WHERE uname = ?", (today, uname))
                 remain_sun = self.search_usr(uname)
-                self.update_data(uname,remain_sun+1000)
+                self.update_data(uname,remain_sun+2000)
                 self.conn.commit()
                 return True
         else:
